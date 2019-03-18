@@ -1,0 +1,79 @@
+<html>
+<head>
+	<title>Blocks</title>
+	<style>
+		div{
+			border:solid;
+			width:100px;
+			height:100px;
+			display:inline-block;
+			padding:25px;
+			box-sizing:border-box;
+			margin-right:20px;
+			position:relative;
+		}
+	</style>
+</head>
+<body>
+
+		<div id="red" style="background-color:black; text-align:center; border-radius:50px 50px 50px 50px">Stop</div>
+		<br /><br /><br />
+		<div id="yellow" style="background-color:black; text-align:center; border-radius:50px 50px 50px 50px">Ready</div>
+		<br /><br /><br />
+		<div id="green" style="background-color:black; text-align:center; border-radius:50px 50px 50px 50px">Go</div>
+		<br /><br /><br /><br /><br />
+		<input type="button" id="start" value="Start" onclick="start()"/>
+		
+		<input type="button" id="emergency" value="Emergency" onclick="emergency()"/>
+		
+		<input type="button" id="saved" value="Saved" onclick="saved()"/>
+
+<script src="../js/jquery-3.3.1.js"></script>		
+
+<script>
+
+var x=1; var check=true; var a;
+
+function start(){
+	changeColor();
+	a=setInterval(changeColor,5000);
+}
+
+function changeColor(){
+	if(x==1){
+		document.getElementById("green").style.backgroundColor="black";
+		document.getElementById("yellow").style.backgroundColor="black";
+		document.getElementById("red").style.backgroundColor="red";
+		x=2;
+	}
+	else if(x==2){
+			document.getElementById("red").style.backgroundColor="black";
+			document.getElementById("green").style.backgroundColor="black";
+			document.getElementById("yellow").style.backgroundColor="yellow";
+			x=3;
+	}
+	else if(x==3){
+			document.getElementById("red").style.backgroundColor="black";
+			document.getElementById("yellow").style.backgroundColor="black";
+			document.getElementById("green").style.backgroundColor="green";
+			if(check){
+			x=1;}
+	}
+}
+
+function emergency(){
+	x=3;
+	check=false;
+	changeColor();
+}		
+
+function saved(){
+	check=true;
+	
+	changeColor();
+}
+
+</script>
+
+</body>
+</html>
